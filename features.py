@@ -7,7 +7,7 @@ def playlist_name(playlist_id: str, token: str) -> dict:
     try:
         playlist = sp.playlist(playlist_id, fields="name")
         return playlist
-    except:
+    except Exception as e:
         None
 
 #Get playlist items from the spotify API.
@@ -30,7 +30,7 @@ def get_api_playlist_tracks(playlist_id: str, token: str) -> list:
             concat_dict = {**playlist_name, **artist_name, **artist_id, **song_name, **song_id, **album_name, **popularity, **duration_ms, **added_at}
             list_of_dict.append(concat_dict)
         return list_of_dict
-    except:
+    except Exception as e:
         return None
 
 #Get genre of artits from the spotify API.
@@ -41,7 +41,7 @@ def get_api_artist(artist_id: str, token: str) -> dict:
         seprate_artist_response = [ele for ele in artist_response['artists']]
         for ele in seprate_artist_response:
             return ele['genres']
-    except:
+    except Exception as e:
         return None
         
 #Get track features from the spotify API.
@@ -50,7 +50,7 @@ def get_api_features(track_id: str, token: str) -> dict:
     try:
         features = sp.audio_features([track_id])
         return features[0]
-    except:
+    except Exception as e:
         return None
 
 #Convert miliseconds to minutes and seconds.
