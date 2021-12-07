@@ -11,7 +11,12 @@ def get_token():
     token = util.prompt_for_user_token(username=username, 
                                    scope=scope, 
                                    client_id=client_id,   
-                                   client_secret=client_secret,     
-                                   redirect_uri=redirect_uri)
-    
+    token = util.prompt_for_user_token(
+        username=username,
+        scope=scope,
+        client_id=client_id,
+        client_secret=client_secret,
+        redirect_uri=redirect_uri,
+    )
+
     return token
