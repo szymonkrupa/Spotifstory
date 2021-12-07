@@ -7,7 +7,7 @@ def playlist_name(playlist_id: str, token: str) -> dict:
     try:
         playlist = sp.playlist(playlist_id, fields="name")
         return playlist
-    except:
+    except Exception as e:
         None
 
 
@@ -48,7 +48,7 @@ def get_api_playlist_tracks(playlist_id: str, token: str) -> list:
             }
             list_of_dict.append(concat_dict)
         return list_of_dict
-    except:
+    except Exception as e:
         return None
 
 
@@ -59,8 +59,8 @@ def get_api_artist(artist_id: str, token: str) -> dict:
         artist_response = sp.artists([artist_id])
         seprate_artist_response = [ele for ele in artist_response["artists"]]
         for ele in seprate_artist_response:
-            return ele["genres"]
-    except:
+            return ele['genres']
+    except Exception as e:
         return None
 
 
@@ -70,7 +70,7 @@ def get_api_features(track_id: str, token: str) -> dict:
     try:
         features = sp.audio_features([track_id])
         return features[0]
-    except:
+    except Exception as e:
         return None
 
 
